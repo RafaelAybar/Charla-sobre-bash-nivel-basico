@@ -1,7 +1,8 @@
-!/bin/bash
+#!/bin/bash
+#defino el patron en una variable. En este caso "Distinto de 1234" sería lo que significa ese patron
+pat='[^1-4]'
 while true
 do
-
 	echo "MENÚ DEL DÍA"
 	echo "1 Pastel de carne de primero y lentejas de segundo"
 	echo "2 Sopa de pescado de primero y migas de segundo"
@@ -9,10 +10,9 @@ do
 	echo "4 Salir"
 	read respuesta
 
-    if [ -z $respuesta ] # esto comprueba que la variable NO esté vacía
+    if [[ $respuesta =~ $pat ]] # esto comprueba que respuesta sea distinto de 1234
     then
         echo "Debes escoger una opción válida."
-        continue # Si no, intentará comparar '' con un número y fallará.
     fi
 
     # Para Bash verdadero es igual a 1 y falso es igual a 0.
@@ -34,19 +34,4 @@ do
 		echo "Hasta luego"
 		exit
     fi
-
-    if [ $respuesta -gt 4 ]  # esto comprueba que la variable NO sea mayor que 4
-    then
-        echo "Debe ser uno de los números del menú."
-
-	
-    fi
-    if [ $respuesta -lt 1 ] #esto comprueba que la variable NO sea menor que 0
-		
-	then
-        echo "Debe ser uno de los números del menú."
-
-	
-    fi
 done
-
