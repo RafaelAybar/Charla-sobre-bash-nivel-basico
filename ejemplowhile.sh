@@ -1,37 +1,22 @@
 #!/bin/bash
-#defino el patron en una variable. En este caso "Distinto de 1234" sería lo que significa ese patron
-pat='[^1-4]'
 while true
 do
-	echo "MENÚ DEL DÍA"
-	echo "1 Pastel de carne de primero y lentejas de segundo"
-	echo "2 Sopa de pescado de primero y migas de segundo"
-	echo "3 Bogavante a las finas hierbas de primero y ensalada de segundo"
-	echo "4 Salir"
-	read respuesta
+  cat <<-EOF
+MENÚ DEL DÍA
+1 Pastel de carne de primero y lentejas de segundo
+2 Sopa de pescado de primero y migas de segundo
+3 Bogavante a las finas hierbas de primero y ensalada de segundo
+4 Salir
+EOF
+  read respuesta
 
-    if [[ $respuesta =~ $pat ]] # esto comprueba que respuesta sea distinto de 1234
-    then
-        echo "Debes escoger una opción válida."
-    fi
-
-    # Para Bash verdadero es igual a 1 y falso es igual a 0.
-    # Si la condición es verdadera, Bash devuelve 1 y se ejecuta el código dentro del if
-    if [ $respuesta = 1 ]
-    then
-        echo "¿En serio, buena suerte?"
-
-    # elif solo comprobará su condición cuando la condición del if devuelva 0.
-    # Si la respuesta es 1, no hace falta comprobar si es 2.
-    elif [ $respuesta = 2 ]
-    then
-        echo "¡Muy buena elección, es nuestra especialidad!"
-    elif [ $respuesta = 3 ]
-    then
-        echo "Una elección digna de un auténtico sibarita..."
-    elif [ $respuesta = 4 ]
-	then
-		echo "Hasta luego"
-		exit
-    fi
+  case $respuesta in
+    1) echo "¿En serio, buena suerte?";;
+    2) echo "¡Muy buena elección, es nuestra especialidad!";;
+    3) echo "Una elección digna de un auténtico sibarita...";;
+    4) echo "Hasta luego"
+       exit;;
+    *) echo "Debes escoger una opción válida.";;
+  esac
+		#case es un bucle que nos permite comrpobar directamente las opciones
 done
