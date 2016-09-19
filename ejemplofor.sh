@@ -1,3 +1,4 @@
+#!/bin/bash
 echo "Vamos a comprobar cuántos ficheros y directorios tienes"
 for fichero in $(ls .)
  		#Con esto hacemos que en nuestra carpeta, el bucle for detecte qué es lo que contiene nuestra carpeta
