@@ -6,6 +6,7 @@ if [ $respuesta = ‘si’ ]
         echo “venga ya”
 else 
 if [ $respuesta = ‘no’ ]
+    then
     echo “menos mal”
 fi
 fi
